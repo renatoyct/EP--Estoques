@@ -41,7 +41,8 @@ while escolha != 0:
             quantidade = int(input('Quantidade inicial: '))
             preco = float(input('Preço do produto: R$ '))
             if preco >= 0:
-                estoque[produto] = {'quantidade': quantidade,'valor' : preco}
+                estoque[produto] = {'quantidade': quantidade,'valor' : preco,\
+                       'z.total': quantidade * preco}
                 print ('\nItem adicionado com sucesso!')
             else:
                 print('\nValor inválido!')
@@ -60,20 +61,22 @@ while escolha != 0:
         produto = input('Nome do produto: ')    
         if produto in estoque:
             comando = -1
+            print(' ')
             print ('\nA atual quantidade deste produto no estoque é: {0}'\
                    .format(estoque[produto]['quantidade']))
             print ('\nO atual preço deste produto é: R${0}'\
                    .format(estoque[produto]['valor']))
-            print('\n7 - Alterar quantidade do produto no estoque')
-            print('8 - Alterar preço do produto')
-            print('9 - Alterar preço e quantidade do produto')
+            print(' ')
+            print('\n5 - Alterar quantidade do produto no estoque')
+            print('6 - Alterar preço do produto')
+            print('7 - Alterar preço e quantidade do produto')
             comando = int(input('\nEscolha um comando: '))
-            if comando ==7:
+            if comando ==5:
                 quantidade = int(input('\nQuantidade a ser adicionada: '))
                 estoque[produto]['quantidade'] += quantidade
                 print('\nA nova quantidade deste produto no estoque é: {0}'\
                   .format(estoque[produto]['quantidade']))
-            elif comando == 8:
+            elif comando == 6:
                 novo_preco = float(input('\nNovo preço do produto: R$ '))
                 if novo_preco >= 0:
                     estoque[produto]['valor'] = novo_preco
@@ -82,7 +85,7 @@ while escolha != 0:
                 else:
                     print('\nValor inválido')
             
-            elif comando == 9:
+            elif comando == 7:
                 quantidade = int(input('\nQuantidade a ser adicionada: '))
                 novo_preco = float(input('\nNovo preço do produto: R$ '))
                 estoque[produto]['quantidade'] += quantidade
@@ -97,9 +100,37 @@ while escolha != 0:
         else:
             print ('\nO produto não foi encontrado no estoque!')
     
-    elif escolha == 4:
-        print (estoque)
     
+    elif escolha == 4:
+        print ('\n8 - Imprimir estoque completo')
+        print ('9 - Listar produtos com quantidade negativa')
+        print ('10 - Exibir valor monetário total')
+        comando = int(input('\nEscolha um comando: '))
+       
+        if comando == 8:
+            print(' ')
+            for i in estoque:
+                print('{0}: quantidade = {1}; valor = {2}; total = {3}'\
+                      .format(i, estoque[i]['quantidade'], estoque[i]['valor'],\
+                              estoque[i]['z.total']))
+            if i not in estoque:
+                print('Estoque vazio')
+        
+        elif comando == 9:
+           estoque_negativo = {}
+           for i in estoque:
+               if estoque[i]['quantidade'] < 0:
+                   estoque_negativo[i] = estoque[i]['quantidade']
+                   print ('\n{0}: {1}' .format(i, estoque[i]['quantidade']))
+
+        
+        elif comando == 10:
+            monetario = 0
+            for i in estoque:
+                monetario += estoque[i]['quantidade'] * estoque [i]['valor']
+            print ('\nO valor monetario total do seu estoque é: R${0}'\
+                   .format(monetario))
+        
     
     elif escolha != 0:
         print('\nComando inválido!')
