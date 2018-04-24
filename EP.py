@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Apr 16 16:21:49 2018
+Created on Tue Apr 24 14:13:25 2018
 
-EP: Sistema de Grenciamento de Estoque
-
-@author: Renato Tajima e Pedro Perri
+@author: User
 """
 
 import json
@@ -12,6 +10,9 @@ import os
 
 a = open('estoque.json', 'a')
 a.close()
+
+
+
 
 with open('estoque.json', 'r') as f:
     if os.stat('estoque.json').st_size == 0:
@@ -21,6 +22,9 @@ with open('estoque.json', 'r') as f:
         estoque = json.loads(conteudo)
         
 escolha = -1
+
+loja = input("Escolha uma loja")
+estoque[loja] = loja
 
 print ('\nCONTROLE DE ESTOQUE ABERTO')
 
