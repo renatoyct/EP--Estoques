@@ -7,8 +7,23 @@ EP: Sistema de Grenciamento de Estoque
 @author: Renato Tajima e Pedro Perri
 """
 
-estoque = {}
 
+import json
+import os
+
+a = open('estoque.json', 'a')
+a.close()
+
+with open('estoque.json', 'r') as f:
+    if os.stat('estoque.json').st_size == 0:
+        estoque = {}
+    else:
+        conteudo = f.read()
+        estoque = json.loads(conteudo)
+        
+        
+        
+        
 escolha = -1
 
 while escolha != 0:
@@ -55,8 +70,11 @@ while escolha != 0:
     
     elif escolha != 0:
         print('\nComando inválido!')
-
+        
+            
 if escolha == 0:
     print ('\nControle de estoque encerrado!')
-    print ('\nAté mais!')    
-
+    print ('\nAté mais!')   
+    novo_estoque = json.dumps(estoque, sort_keys = True, indent = 0)
+    with open ('estoque.json', 'w') as f:
+        novo_conteudo = f.write(novo_estoque)
