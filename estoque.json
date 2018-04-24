@@ -1,0 +1,16 @@
+{
+"1": {
+"bala": {
+"quantidade": 2,
+"valor": 1.0,
+"z.total": 2.0
+}
+},
+"Loja 1": {
+"celular": {
+"quantidade": 1,
+"valor": 100.0,
+"z.total": 100.0
+}
+}
+}
