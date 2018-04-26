@@ -4,7 +4,6 @@ Created on Tue Apr 24 14:13:25 2018
 
 @author: User
 """
-
 from firebase import firebase
 
 base_de_dados = firebase.FirebaseApplication(\
@@ -16,7 +15,7 @@ if estoque == None:
     estoque = {}
 
 
-loja = input('\nEscolha uma loja: ')
+loja = input('\nESCOLHA UMA LOJA PARA EDITAR: ')
 if loja not in estoque:
     estoque[loja] = {}
     
@@ -154,7 +153,11 @@ while escolha != 0:
             
         elif comando == 4:
             for e in estoque:
-                print('\n{0}: {1}'.format(e, estoque [e]))
+                print ('\n{0}'.format(e))
+                for i in estoque[e]:
+                    print('{0} : quantidade = {1}, valor = {2}, vlr_total = {3}'\
+                          .format(i, estoque [e][i]['quantidade'], estoque [e][i]['valor'],\
+                                  estoque[e][i]['vlr_total']))
 
                 
     elif escolha == 5:
