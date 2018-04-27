@@ -7,7 +7,7 @@ Created on Tue Apr 24 14:13:25 2018
 from firebase import firebase
 
 base_de_dados = firebase.FirebaseApplication(\
-                        'https://estoque-7f000.firebaseio.com/', None)
+                        'https://ep-1-dded7.firebaseio.com/', None)
 
 estoque = base_de_dados.get('/Estoque/lojas', None)
 
